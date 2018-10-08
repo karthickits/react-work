@@ -6,3 +6,17 @@ Callback problems
 1. To handle error inside callback block
 avoid chain of callback handlers in callback while handling errors
 Solution: Promises
+
+Two key concepts of react js
+1.Properties(props)
+2.State
+
+JSX Rules
+---------------
+Single root node
+start tag must be ended properly
+
+https://drive.google.com/file/d/1A9GPPTRPlMeiqyCTfQaswL4glBHAKO7I/view
+
+
+https://drive.google.com/file/d/1L6zM3IaxL5GdTE7N3zbR8k1BocfEJ65p/view
