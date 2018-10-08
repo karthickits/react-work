@@ -1,0 +1,3 @@
+Arrow functions
+1. Consise
+2. better "this" behaviour
