@@ -1,3 +1,8 @@
 Arrow functions
 1. Consise
 2. better "this" behaviour
+
+Callback problems
+1. To handle error inside callback block
+avoid chain of callback handlers in callback while handling errors
+Solution: Promises
