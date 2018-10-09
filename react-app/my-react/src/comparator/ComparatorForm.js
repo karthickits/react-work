@@ -9,6 +9,7 @@ class ComparatorForm extends React.Component {
       compTo: ""
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.textChanged = this.textChanged.bind(this);
   }
 
   handleFormSubmit() {
@@ -19,14 +20,20 @@ class ComparatorForm extends React.Component {
     console.log(submitValues);
   }
 
-  textChanged() {
-    const formTextValues = {
-        gitBranch: this.state.textVal,
-        microservice: this.state.textVal
-      };
-      console.log(submitValues);
+  textChanged(eventObj) {
+    //const formTextValues = {};
+    //console.log(formTextValues);
+
+    if (eventObj.target.id === "gitBranchId") {
+      this.setState({
+        gitBranch: eventObj.target.value
+      });
+    } else {
+      console.log("Other events Obtained: ", eventObj);
     }
   }
+
+  selectionMade(eventObj) {}
 
   render() {
     return (
@@ -34,19 +41,34 @@ class ComparatorForm extends React.Component {
         <label name="gitBranch">Git Branch</label>
         <input
           type="text"
+          id="gitBranchId"
           name="gitBranch"
           value={this.state.textVal}
           onChange={this.textChanged}
         />
         <br />
         <label name="microservice">Microservice</label>
-        <input type="text" name="ms" />
+        <input
+          id="msId"
+          type="text"
+          name="ms"
+          value={this.state.textVal}
+          onChange={this.textChanged}
+        />
         <br />
-        <label name="gitBranch">Compare From</label>
-        <input type="text" name="compareFrom" />
+        <label name="compareFrom">Compare From</label>
+        <select onChange={this.selectEnv}>
+          <option value="t4">t4</option>
+          <option value="aws_e">AWS-EAST</option>
+          <option value="aws_w">AWS-WEST</option>
+        </select>
         <br />
-        <label name="gitBranch">Compare To</label>
-        <input type="text" name="comapareTo" />
+        <label name="comapareTo">Compare To</label>
+        <select>
+          <option value="t4">t4</option>
+          <option value="aws_e">AWS-EAST</option>
+          <option value="aws_w">AWS-WEST</option>
+        </select>
         <br />
         <input type="button" value="compare!" onClick={this.handleFormSubmit} />
       </form>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./styles.css";
 import * as calc from "./util/calculate";
 import sayAwesome from "./util/greeter";
 import Hello from "./util/hello";
@@ -9,6 +9,8 @@ import App from "./util/App";
 import DynamicState from "./util/DynamicState";
 import TableApp from "./TableApp";
 import ComparatorForm from "./comparator/ComparatorForm";
+import Main from "./Main";
+import { BrowserRouter } from "react-router-dom";
 
 const greet = new Hello();
 greet.sayHello();
@@ -26,5 +28,11 @@ ReactDOM.render(
     <TableApp />
     <ComparatorForm />
   </div>,
+  document.getElementById("app2")
+);
+ReactDOM.render(
+  <BrowserRouter>
+    <Main />
+  </BrowserRouter>,
   document.getElementById("app")
 );
