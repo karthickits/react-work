@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Page</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <style type="text/css">
+        span {
+            font-weight: bold;
+            color: red;
+            text-transform: uppercase;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app1"></div>
+    <script type="text/babel">
+ 
+        const DEFAULT_COLORS = {"g":"green", "y":"yellow", "r":"red", "b":"blue"} ;
+        
+      /*  Hello.defaultProps = {
+            name : "NoName",
+            greet : "NoGreet",
+            bodyTxt : "NoBodyTxt"
+        } */
+
+        class HelloTitle extends React.Component {
+            render() {
+                return <h1>{this.props.greet} <span>{this.props.name}</span></h1> ;
+            }
+        }
+
+        class HelloBody extends React.Component {
+
+            render() {
+
+                const {greet, name, children, bColor} = this.props ;
+
+                console.log(children);                
+
+                let colorsArray = children.map((element) => {
+                    return <li>{element}</li>
+                }) ;
+
+                return <div style={{"color": DEFAULT_COLORS[bColor]}}><h1>Body content: {this.props.bodyTxt}</h1><br />
+                    <ul>{colorsArray}</ul>
+                <hr/></div>;
+            }
+        }
+
+        class Hello extends React.Component {
+
+           
+            render() {
+                return <div><HelloTitle name={this.props.name} greet={this.props.greet} bodyTxt={this.props.bodyTxt}  /><h1>first react application</h1><br /><div>Just some text here<HelloBody bColor={this.props.bColor} name={this.props.name} greet={this.props.greet} bodyTxt={this.props.bodyTxt}>{this.props.children}</HelloBody></div></div> ;
+            }
+        }
+
+        Hello.defaultProps = {
+            name : "NoName",
+            greet : "NoGreet",
+            bodyTxt : "NoBodyTxt",
+            bColor : "red",
+            children : ["DEFAULTED_COLOR"]
+        }
+ 
+        const rootNode = document.getElementById("app1") ;
+
+        let bodyColors = ["green", "red", "blue"] ;
+
+        let bodyColors2 = ["green", "red"] ;
+
+        ReactDOM.render(<div>Sample
+            <Hello name="prakash" greet="Hello" bodyTxt="ReactJS" bColor="r">{bodyColors}</Hello>
+            <Hello name="karthik" greet="Hey" bodyTxt="AngularJS" bColor="g">{bodyColors2}</Hello>
+            <Hello name="srikanth" greet="Hello" bodyTxt="ExtJS" bColor="y">{bodyColors}</Hello>
+            <Hello bColor="b" />
+            <Hello  name= "Prakash New">{bodyColors}</Hello>
+            </div>, rootNode );
+             
+    </script>
+</body>
+
+</html>
