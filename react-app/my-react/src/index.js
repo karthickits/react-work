@@ -28,11 +28,11 @@ ReactDOM.render(
     <TableApp />
     <ComparatorForm />
   </div>,
-  document.getElementById("app2")
+  document.getElementById("app")
 );
 ReactDOM.render(
   <BrowserRouter>
     <Main />
   </BrowserRouter>,
-  document.getElementById("app")
+  document.getElementById("app2")
 );

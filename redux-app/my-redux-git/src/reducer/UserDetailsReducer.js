@@ -1,8 +1,9 @@
 function UserDetailsReducer(
   prevState = {
     fetching: false,
-    userDetails: {},
-    error: ""
+    userDetails: [],
+    error: "",
+    selectId: 0
   },
   action
 ) {
@@ -12,7 +13,7 @@ function UserDetailsReducer(
       newState = {
         ...prevState,
         fetching: true,
-        userDetails: {},
+        userDetails: [],
         error: ""
       };
       break;
@@ -28,8 +29,56 @@ function UserDetailsReducer(
       newState = {
         ...prevState,
         fetching: false,
-        userDetails: {},
+        userDetails: [],
         error: action.error
+      };
+      break;
+    case "DPT_FETCHING":
+      newState = {
+        ...prevState,
+        fetching: true,
+        userDetails: [],
+        error: ""
+      };
+      break;
+    case "DPT_FTCH_SUCCESS":
+      newState = {
+        ...prevState,
+        fetching: true,
+        userDetails: action.userDetails,
+        error: ""
+      };
+      break;
+    case "DPT_FTCH_ERROR":
+      newState = {
+        ...prevState,
+        fetching: true,
+        userDetails: [],
+        error: ""
+      };
+      break;
+    case "EMP_FETCHING":
+      newState = {
+        ...prevState,
+        fetching: true,
+        userDetails: [],
+        error: ""
+      };
+      break;
+    case "EMP_FTCH_SUCCESS":
+      newState = {
+        ...prevState,
+        fetching: true,
+        userDetails: action.userDetails,
+        error: ""
+      };
+      break;
+    case "EMP_FTCH_ERROR":
+      newState = {
+        ...prevState,
+        fetching: true,
+        userDetails: [],
+        error: ""
       };
       break;
     default:

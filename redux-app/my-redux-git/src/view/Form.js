@@ -3,8 +3,19 @@ class Form extends React.Component {
   render() {
     return (
       <form>
-        <input type="text" value="" />
-        <input type="button" value="Get User Details" />
+        <input
+          type="text"
+          ref={node => {
+            this.urlTextBox = node;
+          }}
+        />
+        <input
+          type="button"
+          value="Get User Details"
+          onClick={() => {
+            this.props.getUserDetails(this.urlTextBox.value);
+          }}
+        />
       </form>
     );
   }
